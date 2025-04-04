@@ -26,13 +26,13 @@ public class Test {
     @org.testng.annotations.Test (priority = 1)
         public void testAddToCart() {
             Cart productPage = new Cart(driver);
-            productPage.Size(driver);
-            productPage.color(driver);
+            productPage.selectSize(driver);
+            productPage.selectColorAndAddToCart(driver);
         }
     @org.testng.annotations.Test (priority = 3)
     public void testCheckCartCount() throws InterruptedException {
         CheckCartCount c = new CheckCartCount(driver);
-        c.click(driver);
+        c.clickCart(driver);
     }
         // you can comment after test function to see results
         @AfterTest
