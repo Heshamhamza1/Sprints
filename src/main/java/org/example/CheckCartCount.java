@@ -1,5 +1,6 @@
 package org.example;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,5 +23,16 @@ public class CheckCartCount {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOf(cart));
         cart.click();
+    }
+    public void Added (WebDriver driver)
+    {
+        WebElement success = driver.findElement(By.cssSelector("div.block-content"));
+        String content = success.getText();
+        if (!content.contains("You have no items in your shopping cart.\n")) {
+            System.out.println("Added successfully:\n"+ content);
+        }
+        else {
+            System.out.println("Failed to add to cart");
+        }
     }
 }

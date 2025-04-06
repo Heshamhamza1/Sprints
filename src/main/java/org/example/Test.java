@@ -21,6 +21,7 @@ public class Test {
         public void testProductSearch() throws InterruptedException {
             HomePage homePage = new HomePage(driver);
             homePage.searchForProduct("hoodie");
+            homePage.printMainContent(driver);
             homePage.Scroll(driver);
         }
     @org.testng.annotations.Test (priority = 1)
@@ -33,6 +34,7 @@ public class Test {
     public void testCheckCartCount() throws InterruptedException {
         CheckCartCount c = new CheckCartCount(driver);
         c.clickCart(driver);
+        c.Added(driver);
     }
         // you can comment after test function to see results
         @AfterTest
