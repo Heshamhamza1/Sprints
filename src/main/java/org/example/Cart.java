@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Cart {
     private WebDriver driver;
+    private WebDriverWait wait;
 
     @FindBy(id = "option-label-size-143-item-166")
     private WebElement size;
@@ -33,7 +34,7 @@ public class Cart {
     }
 
     public void selectColorAndAddToCart(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.elementToBeClickable(color)).click();
         wait.until(ExpectedConditions.elementToBeClickable(addToCartButton)).click();
     }

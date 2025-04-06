@@ -34,7 +34,7 @@ public class Test {
     public void testCheckCartCount() throws InterruptedException {
         CheckCartCount c = new CheckCartCount(driver);
         c.clickCart(driver);
-        c.Added(driver);
+        c.verifyItemAdded(driver);
     }
         // you can comment after test function to see results
         @AfterTest
