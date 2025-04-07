@@ -1,8 +1,9 @@
 package org.example;
-
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.*;
 import org.openqa.selenium.support.ui.*;
+import org.testng.Assert;
+
 
 public class CheckCartCount {
     private final WebDriver driver;
@@ -22,21 +23,22 @@ public class CheckCartCount {
     }
 
     public void verifyItemAdded(WebDriver driver) {
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.minicart-items-wrapper")));
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.price-container")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(@class, 'amount ') and contains(@class, 'price-container')]")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(@class, 'minicart-price')]")));
 
-        WebElement success = driver.findElement(By.cssSelector("div.minicart-items-wrapper"));
-        WebElement qtyElement = driver.findElement(By.xpath("//*[contains(@class, 'item-qty') and contains(@class, 'cart-item-qty')]"));
+        WebElement success = driver.findElement(By.xpath("//*[contains(@class, 'amount ') and contains(@class, 'price-container')]"));
+        WebElement qtyElement = driver.findElement(By.xpath("//*[contains(@class, 'minicart-price')]"));
 
         String content = success.getText();
-        String quantity = qtyElement.getTagName().equals("input") ? qtyElement.getAttribute("value") : qtyElement.getText();
+        String quantity = qtyElement.getText();
+        Assert.assertEquals(content,quantity, "Quantity does not match expected value");
 
-        if (!content.contains("You have no items in your shopping cart.")) {
-            content = content.replaceAll("(?i)\\b(Edit|Remove)\\b", "")
-                    .replaceAll("(?i)\\bSee Details\\b", "Price:");
-            System.out.println("Added successfully:\n" + content.trim() + ": " + quantity);
-        } else {
-            System.out.println("Failed to add to cart");
-        }
+//        if (!content.contains("You have no items in your shopping cart.")) {
+//            content = content.replaceAll("(?i)\\b(Edit|Remove)\\b", "")
+//                    .replaceAll("(?i)\\bSee Details\\b", "Price:");
+//            System.out.println("Added successfully:\n" + content.trim() + ": " + quantity);
+//        } else {
+//            System.out.println("Failed to add to cart");
+//        }
     }
 }
