@@ -48,5 +48,13 @@
             <artifactId>webdrivermanager</artifactId>
             <version>5.8.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>5.0.9</version>
+        </dependency>
+
     </dependencies>
+
+
 </project>
