@@ -17,7 +17,6 @@ public class Test {
         driver.navigate().to("https://magento.softwaretestingboard.com/men/tops-men/hoodies-and-sweatshirts-men.html");
         driver.manage().window().maximize();
     }
-
     @org.testng.annotations.Test(priority = 2)
     public void testProductSearch() throws InterruptedException {
         Main.test = Main.extent.createTest("testProductSearch");
