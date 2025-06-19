@@ -22,7 +22,7 @@ public class Test {
         Main.test = Main.extent.createTest("testProductSearch");
         HomePage homePage = new HomePage(driver);
         homePage.searchForProduct("hoodie");
-        homePage.printMainContent(driver);
+        homePage.printMainContent();
         homePage.Scroll(driver);
         Main.test.log(Status.PASS, "Product search test completed.");
     }
@@ -32,7 +32,7 @@ public class Test {
         Main.test = Main.extent.createTest("testAddToCart");
         Cart productPage = new Cart(driver);
         productPage.selectSize(driver);
-        productPage.selectColorAndAddToCart(driver);
+        productPage.selectColorAndAddToCart();
         Main.test.log(Status.PASS, "Add to cart test completed.");
     }
 
@@ -40,8 +40,8 @@ public class Test {
     public void testCheckCartCount() throws InterruptedException {
         Main.test = Main.extent.createTest("testCheckCartCount");
         CheckCartCount c = new CheckCartCount(driver);
-        c.clickCart(driver);
-        c.verifyItemAdded(driver);
+        c.clickCart();
+        c.verifyItemAdded();
         Main.test.log(Status.PASS, "Cart count verified successfully.");
     }
 
@@ -60,6 +60,6 @@ public class Test {
     @AfterTest
     public void tearDown() {
         driver.quit();
-        Main.flushReport(); // generate report when done
+        Main.flushReport();
     }
 }

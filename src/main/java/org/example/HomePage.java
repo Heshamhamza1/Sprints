@@ -30,7 +30,7 @@ public class HomePage extends BaseClass {
         js.executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
-    public void printMainContent(WebDriver driver) {
+    public void printMainContent() {
         WebElement mainContent =Element("css", "div.products");
         String content = mainContent.getText();
 

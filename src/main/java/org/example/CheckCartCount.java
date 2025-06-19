@@ -11,12 +11,12 @@ public class CheckCartCount extends BaseClass {
     }
 
 
-    public void clickCart(WebDriver driver) {
+    public void clickCart() {
         waitForElement("xpath", "/html/body/div[2]/header/div[2]/div[1]/a", "clickable", 5).click();
 
     }
 
-    public void verifyItemAdded(WebDriver driver) {
+    public void verifyItemAdded() {
         waitForElement("css", "div.minicart-items-wrapper", "visible", 5);
         waitForElement("css", "div.price-container", "visible", 5);
 
