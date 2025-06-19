@@ -8,8 +8,9 @@ This project is a basic TestNG-based Selenium automation script that tests produ
 - Selenium WebDriver
 - TestNG
 - WebDriverManager
-- Maven (optional but recommended for dependency management)
+- Maven
 - ChromeDriver
+- Extent Reports
 
 ## 📋 Test Cases Covered
 
@@ -24,5 +25,8 @@ This project is a basic TestNG-based Selenium automation script that tests produ
    - Java JDK (8 or above)
    - Maven
    - Chrome browser
+   - ChromeDriver (compatible with your Chrome version)
+   - IDE (like IntelliJ IDEA or Eclipse)
+   
   3. **Install dependencies:**
    - POM.xml file includes dependencies used

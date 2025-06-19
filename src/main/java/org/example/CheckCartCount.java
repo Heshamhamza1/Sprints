@@ -1,32 +1,27 @@
 package org.example;
 
+import Baseclass.BaseClass;
+
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.*;
-import org.openqa.selenium.support.ui.*;
 
-public class CheckCartCount {
-    private WebDriver driver;
-    private WebDriverWait wait;
 
-    @FindBy(xpath = "/html/body/div[2]/header/div[2]/div[1]/a")
-    private WebElement cart;
-
+public class CheckCartCount extends BaseClass {
     public CheckCartCount(WebDriver driver) {
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, 10);
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
+
     public void clickCart(WebDriver driver) {
-        wait.until(ExpectedConditions.visibilityOf(cart)).click();
+        waitForElement("xpath", "/html/body/div[2]/header/div[2]/div[1]/a", "clickable", 5).click();
+
     }
 
     public void verifyItemAdded(WebDriver driver) {
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.minicart-items-wrapper")));
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.price-container")));
+        waitForElement("css", "div.minicart-items-wrapper", "visible", 5);
+        waitForElement("css", "div.price-container", "visible", 5);
 
-        WebElement success = driver.findElement(By.cssSelector("div.minicart-items-wrapper"));
-        WebElement qtyElement = driver.findElement(By.xpath("//*[contains(@class, 'item-qty') and contains(@class, 'cart-item-qty')]"));
+        WebElement success = Element("css", "div.minicart-items-wrapper");
+        WebElement qtyElement = Element("xpath", "//*[contains(@class, 'item-qty') and contains(@class, 'cart-item-qty')]");
 
         String content = success.getText();
         String quantity = qtyElement.getTagName().equals("input") ? qtyElement.getAttribute("value") : qtyElement.getText();

@@ -1,40 +1,37 @@
 package org.example;
-import org.openqa.selenium.By;
+
+import Baseclass.BaseClass;
+
 import org.openqa.selenium.JavascriptExecutor;
+
 import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-import java.util.List;
 
-public class HomePage {
-    WebDriver driver;
-
-    @FindBy(id = "search")
-    WebElement searchBox;
-
-    @FindBy(xpath = "//button[@type='submit']")
-    WebElement searchButton;
-
+public class HomePage extends BaseClass {
     public HomePage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
+    WebElement searchBox=Element("id", "search");
+
+    WebElement searchButton=Element("xpath", "//button[@type='submit']");
 
     public void searchForProduct(String productName) {
         searchBox.sendKeys(productName);
         searchButton.click();
     }
+
     public void Scroll (WebDriver driver)
     {
-        WebElement element = driver.findElement(By.xpath("//*[@id=\"maincontent\"]/div[3]/div[1]/div[2]/div[2]/ol/li[2]/div/a/span/span/img"));
+
+        WebElement element = Element("xpath", "//*[@id=\"maincontent\"]/div[3]/div[1]/div[2]/div[2]/ol/li[2]/div/a/span/span/img");
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
     public void printMainContent(WebDriver driver) {
-        WebElement mainContent = driver.findElement(By.cssSelector("div.products"));
+        WebElement mainContent =Element("css", "div.products");
         String content = mainContent.getText();
 
         if (!content.isEmpty()) {

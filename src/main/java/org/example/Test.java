@@ -1,5 +1,4 @@
 package org.example;
-
 import com.aventstack.extentreports.Status;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,7 +11,7 @@ public class Test {
 
     @BeforeTest
     public void setUp() {
-        Main.startReport(); // initialize report
+        Main.startReport();
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.navigate().to("https://magento.softwaretestingboard.com/men/tops-men/hoodies-and-sweatshirts-men.html");
@@ -62,6 +61,6 @@ public class Test {
     @AfterTest
     public void tearDown() {
         driver.quit();
-        Main.flushReport(); // flush report when done
+        Main.flushReport(); // generate report when done
     }
 }
