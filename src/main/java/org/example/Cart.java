@@ -13,12 +13,12 @@ public class Cart extends BaseClass {
         super(driver);
     }
 
-    WebElement size = Element("id","option-label-size-143-item-166");
 
     public void selectSize(WebDriver driver) {
-        waitForElement("id","option-label-size-143-item-166","visible" , 3);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", size);
-        size.click();
+        waitForElement("xpath","//*[@id=\"option-label-size-143-item-168\"]","visible" , 5);
+        PerformScroll(driver,"elementByxpath", "//*[@id=\"option-label-size-143-item-168\"]");
+//        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", size);
+        Element("xpath","//*[@id=\"option-label-size-143-item-168\"]").click();
     }
 
     public void selectColorAndAddToCart() {

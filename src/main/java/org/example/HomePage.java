@@ -2,8 +2,6 @@ package org.example;
 
 import Baseclass.BaseClass;
 
-import org.openqa.selenium.JavascriptExecutor;
-
 import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.WebElement;
@@ -24,10 +22,7 @@ public class HomePage extends BaseClass {
 
     public void Scroll (WebDriver driver)
     {
-
-        WebElement element = Element("xpath", "//*[@id=\"maincontent\"]/div[3]/div[1]/div[2]/div[2]/ol/li[2]/div/a/span/span/img");
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView(true);", element);
+        PerformScroll(driver, "elementByxpath","//*[@id=\"maincontent\"]/div[3]/div[1]/div[2]/div[2]/ol/li[2]/div/a/span/span/img");
     }
 
     public void printMainContent() {

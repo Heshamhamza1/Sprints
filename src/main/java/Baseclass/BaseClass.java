@@ -1,9 +1,6 @@
 package Baseclass;
 
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -15,7 +12,6 @@ public class BaseClass {
     public BaseClass(WebDriver driver) {
         this.driver = driver;
     }
-
     public WebElement waitForElement(String type, String locator, String waitType, int timeoutInSeconds) {
         WebDriverWait wait = new WebDriverWait(driver,timeoutInSeconds);
         By by = getBy(type, locator);
@@ -44,7 +40,27 @@ public class BaseClass {
                 throw new IllegalArgumentException("Invalid wait type for list: " + waitType);
         }
     }
+    public void PerformScroll(WebDriver driver,String type, String locator) {
+        switch (type)
+        {
+            case "down":
+                int x =0 ;
+                int y = 0;
+                ((JavascriptExecutor) driver).executeScript("window.scrollBy(" + x + "," + y + ");");
 
+               case "height":
+                    int height = driver.manage().window().getSize().getHeight();
+                    ((JavascriptExecutor) driver).executeScript("window.scrollBy(0," + height + ");");
+
+                case "elementById":
+                    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Element("id", locator));
+                case "elementBycss":
+                    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Element("." + "cssSelector", locator));
+                case "elementByxpath":
+                    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Element("xpath", locator));
+                    break;
+        }
+    }
     private By getBy(String type, String value) {
         switch (type.toLowerCase()) {
             case "id":
@@ -68,7 +84,6 @@ public class BaseClass {
         By by = getBy(type, locator);
         return driver.findElement(by);
     }
-
 
     public String print(String message) {
 
